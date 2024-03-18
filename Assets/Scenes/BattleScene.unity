@@ -239,8 +239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408a5444388b97d4499d33dc9006cffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
   healthBarFill: {fileID: 1141136316}
 --- !u!1 &235748397
 GameObject:
@@ -672,12 +670,12 @@ MonoBehaviour:
       - m_Target: {fileID: 3000362}
         m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
         m_MethodName: UpdateHealth
-        m_Mode: 3
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 40
-          m_FloatArgument: 0
+          m_FloatArgument: 40
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -805,12 +803,12 @@ MonoBehaviour:
       - m_Target: {fileID: 3000362}
         m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
         m_MethodName: UpdateHealth
-        m_Mode: 3
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: -50
-          m_FloatArgument: 0
+          m_FloatArgument: -50
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -1282,8 +1280,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 899266959}
   - {fileID: 919761390}
+  - {fileID: 899266959}
   - {fileID: 1149421538}
   m_Father: {fileID: 3000361}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
