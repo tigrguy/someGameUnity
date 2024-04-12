@@ -601,6 +601,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578103397}
   m_CullTransparentMesh: 1
+--- !u!114 &735187627 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 856379218359209045, guid: 70577cfc1af2eb9478783999b80930ce, type: 3}
+  m_PrefabInstance: {fileID: 1703790155}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &736565485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,6 +1139,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997772499}
   m_CullTransparentMesh: 1
+--- !u!114 &1346920019 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 856379218359209045, guid: 70577cfc1af2eb9478783999b80930ce, type: 3}
+  m_PrefabInstance: {fileID: 254075250}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1409648457 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4774470837768282634, guid: 70577cfc1af2eb9478783999b80930ce, type: 3}
@@ -1563,6 +1585,13 @@ MonoBehaviour:
   ResultTxt: {fileID: 804925045}
   PlayerHandCard: []
   EnemyHandCard: []
+  maxHealth: 100
+  healthBarFill: {fileID: 735187627}
+  healthText: {fileID: 1630519185}
+  fillSpeed: 2
+  healthBarFillEnemy: {fileID: 1346920019}
+  healthTextEnemy: {fileID: 1409648457}
+  fillSpeedEnemy: 2
 --- !u!1 &1874645208
 GameObject:
   m_ObjectHideFlags: 0

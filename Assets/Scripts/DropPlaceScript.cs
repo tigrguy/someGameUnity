@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-
 public enum FieldType
 {
     SELF_HAND,
@@ -15,6 +14,7 @@ public enum FieldType
 public class DropPlaceScript : MonoBehaviour, IDropHandler{
 
     public FieldType Type;
+
 
     public void OnDrop(PointerEventData eventData)
     {

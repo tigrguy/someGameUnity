@@ -8,7 +8,7 @@ public class CardSMovementcript : MonoBehaviour, IBeginDragHandler, IDragHandler
     Camera MainCamera;
     Vector3 offset;
     public Transform DefaultParent;
-    GameManager GameManager;
+    public GameManager GameManager;
     public bool IsDraggable;
     void Awake()
     {
@@ -48,5 +48,4 @@ public class CardSMovementcript : MonoBehaviour, IBeginDragHandler, IDragHandler
         transform.SetParent(DefaultParent);
         GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
-
 }

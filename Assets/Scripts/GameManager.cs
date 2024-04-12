@@ -46,9 +46,12 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI TurnTimeText;
     public Button EndTurnButton;
 
+    //public int PlayerMana = 3;
+    //public TextMeshProUGUI PlayerManaTxt;
 
-    public int PlayerHP, EnemyHP;
+    public float PlayerHP, EnemyHP;
     public TextMeshProUGUI PlayerHPTxt, EnemyHPTxt;
+    
 
     public GameObject ResultGO;
     public TextMeshProUGUI ResultTxt;
@@ -75,6 +78,7 @@ public class GameManager : MonoBehaviour
         GiveHandCards(CurrentGame.PlayerDeck, PlayerHand);
 
         StartCoroutine(TurnFunc());
+        //ShowMana();
     }
 
 
@@ -135,6 +139,7 @@ public class GameManager : MonoBehaviour
                 EnemyTurn(EnemyHandCard);
             PlayerHP = PlayerHP - Random.Range(4, 10);
             ShowHP();
+            UpdateHealthBarPlayer();
             ChecnkForResult();
 
         }
@@ -158,7 +163,12 @@ public class GameManager : MonoBehaviour
         EndTurnButton.interactable = IsPlayerTurn;
 
         if (IsPlayerTurn)
+        {
             GiveNewCard();
+            //PlayerMana = Random.Range(1, 4);
+
+            //ShowMana();
+        }
 
         StartCoroutine(TurnFunc());
     }
@@ -183,6 +193,7 @@ public class GameManager : MonoBehaviour
         {
             EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue);
             Destroy(card.gameObject);
+            UpdateHealthBarEnemy();
         }
         else
         {
@@ -193,6 +204,36 @@ public class GameManager : MonoBehaviour
         ShowHP();
         ChecnkForResult();
     }
+    public float maxHealth = 100;
+    [SerializeField] private Image healthBarFill;
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private float fillSpeed;
+    public void UpdateHealthBarPlayer()
+    {
+        float targetFillAmount = PlayerHP / maxHealth;
+        healthBarFill.fillAmount = targetFillAmount;
+        //healthBarFill.DOFillAmount(targetFillAmount,fillSpeed);
+
+
+    }
+    [SerializeField] private Image healthBarFillEnemy;
+    [SerializeField] private TextMeshProUGUI healthTextEnemy;
+    [SerializeField] private float fillSpeedEnemy;
+
+    public void UpdateHealthBarEnemy()
+    {
+        float targetFillAmount = EnemyHP / maxHealth;
+        healthBarFillEnemy.fillAmount = targetFillAmount;
+        //healthBarFill.DOFillAmount(targetFillAmount,fillSpeed);
+
+
+    }
+
+    //void ShowMana()
+    //{
+    //    PlayerManaTxt.text = PlayerMana.ToString();
+    //}
+
 
     void ChecnkForResult()
     {

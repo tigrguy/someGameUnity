@@ -9,13 +9,13 @@ public struct Card
     public string Name;
     public Sprite Logo;
     public int Attack;
-    public int Defense;
-    public Card(string name,string logoPath, int attack, int defense)
+    public int Manacost;
+    public Card(string name,string logoPath, int attack, int manacost)
     {
         Name = name;
         Logo = Resources.Load<Sprite>(logoPath);
         Attack = attack;
-        Defense = defense;
+        Manacost = manacost;
     }
 
 }
@@ -31,10 +31,10 @@ public class CardManager : MonoBehaviour
 {
     public void Awake()
     {
-        CardManag.AllCards.Add(new Card("diplomatia", "Resources/Sprite/Cards/diplomatia", 40,1));
-        CardManag.AllCards.Add(new Card("scream", "Resources/Sprite/Cards/vodka", 11,1));
-        CardManag.AllCards.Add(new Card("vodka", "Resources/Sprite/Cards/vodka", 15, 1));
-        CardManag.AllCards.Add(new Card("scream", "Resources/Sprite/Cards/scream", 33, 1));
+        CardManag.AllCards.Add(new Card("diplomatia", "Resources/Sprite/Cards/diplomatia", 40,10));
+        CardManag.AllCards.Add(new Card("scream", "Resources/Sprite/Cards/vodka", 11,20));
+        CardManag.AllCards.Add(new Card("vodka", "Resources/Sprite/Cards/vodka", 15, 3));
+        CardManag.AllCards.Add(new Card("scream", "Resources/Sprite/Cards/scream", 33, 40));
 
 
     }

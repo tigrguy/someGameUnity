@@ -8,7 +8,7 @@ public class CardInfoScript : MonoBehaviour
 {
     public Card SelfCard;
     public Image Logo;
-    public TextMeshProUGUI Name, Attack, Defense;
+    public TextMeshProUGUI Name, Attack, Manacost;
 
     public void HideCardInfo(Card card)
     {
@@ -26,7 +26,7 @@ public class CardInfoScript : MonoBehaviour
         Name.text = card.Name;
 
         Attack.text = SelfCard.Attack.ToString();
-        Defense.text = SelfCard.Defense.ToString();
+        Manacost.text = SelfCard.Manacost.ToString();
     }
 
     private void Start()

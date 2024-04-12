@@ -109,7 +109,7 @@ MonoBehaviour:
   Logo: {fileID: 5946540809981708909}
   Name: {fileID: 8611755168954994321}
   Attack: {fileID: 2608236743833803759}
-  Defense: {fileID: 413314165431361892}
+  Manacost: {fileID: 413314165431361892}
 --- !u!114 &3255377472771863956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 5412949194849151634}
   - component: {fileID: 413314165431361892}
   m_Layer: 5
-  m_Name: Defense
+  m_Name: Manacost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
