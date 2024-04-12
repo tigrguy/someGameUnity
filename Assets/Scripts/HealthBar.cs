@@ -27,11 +27,11 @@ public class HealthBar : MonoBehaviour
         UpdateHealthBar();
     }
 
-    private void UpdateHealthBar()
+    public void UpdateHealthBar()
     {
         float targetFillAmount = currentHealth / maxHealth;
-        //healthBarFill.fillAmount = targetFillAmount;
-        healthBarFill.DOFillAmount(targetFillAmount,fillSpeed);
+        healthBarFill.fillAmount = targetFillAmount;
+        //healthBarFill.DOFillAmount(targetFillAmount,fillSpeed);
 
 
     }

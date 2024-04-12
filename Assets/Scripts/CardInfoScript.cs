@@ -7,20 +7,31 @@ using TMPro;
 public class CardInfoScript : MonoBehaviour
 {
     public Card SelfCard;
+    public Image Logo;
+    public TextMeshProUGUI Name, Attack, Defense;
 
-    public TextMeshProUGUI Name;
-
-
+    public void HideCardInfo(Card card)
+    {
+        //SelfCard = card;
+        //Name.text = "";
+        ShowCardInfo(card);
+    }
     public void ShowCardInfo(Card card)
     {
         SelfCard = card;
 
- 
+        Logo.sprite = Resources.Load<Sprite>("Sprite/Cards/" + card.Name);
+        Logo.preserveAspect = true;
+
         Name.text = card.Name;
+
+        Attack.text = SelfCard.Attack.ToString();
+        Defense.text = SelfCard.Defense.ToString();
     }
 
     private void Start()
     {
-        ShowCardInfo(CardManag.AllCards[transform.GetSiblingIndex()]);
+       // ShowCardInfo(CardManag.AllCards[transform.GetSiblingIndex()]);
+
     }
 }
