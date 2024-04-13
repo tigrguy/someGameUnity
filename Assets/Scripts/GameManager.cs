@@ -140,10 +140,11 @@ public class GameManager : MonoBehaviour
             }
             if (EnemyHandCard.Count > 0)
                 EnemyTurn(EnemyHandCard);
-            PlayerHP = PlayerHP - Random.Range(8,15);
+            PlayerHP = PlayerHP - Random.Range(40,42);
             ShowHP();
             UpdateHealthBarPlayer();
             ChecnkForResultLose();
+            ShowHP();
             ChecnkForResult();
             
 
@@ -208,6 +209,7 @@ public class GameManager : MonoBehaviour
         }
         ShowHP();
         ChecnkForResultLose();
+        ShowHP();
         ChecnkForResult();
         
     }
@@ -266,8 +268,9 @@ public class GameManager : MonoBehaviour
     public Button LoadingMenuLose;
     void ChecnkForResultLose()
     {
-        if (PlayerHP == 0)
+        if (PlayerHP <= 0)
         {
+            PlayerHP = 0;
             ResultGOLose.SetActive(true);
 
             StopAllCoroutines();
@@ -277,6 +280,7 @@ public class GameManager : MonoBehaviour
                 ResultTxtLose.text = "lose(";
 
             }
+            
 
         }
     }
