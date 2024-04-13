@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
             }
             if (EnemyHandCard.Count > 0)
                 EnemyTurn(EnemyHandCard);
-            PlayerHP = PlayerHP - Random.Range(40,42);
+            PlayerHP = PlayerHP - Random.Range(8,15);
             ShowHP();
             UpdateHealthBarPlayer();
             ChecnkForResultLose();

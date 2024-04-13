@@ -33,10 +33,10 @@ public class CardManager : MonoBehaviour
 {
     public void Awake()
     {
-        CardManag.AllCards.Add(new Card("diplomatia","Наносит урон дипломатией", "Resources/Sprite/Cards/diplomatia", 115,10));
-        CardManag.AllCards.Add(new Card("scary", "Запугивает", "Resources/Sprite/Cards/scary", 125,20));
-        CardManag.AllCards.Add(new Card("charm", "Очаровывает", "Resources/Sprite/Cards/charm", 111, 3));
-        CardManag.AllCards.Add(new Card("diplomatia", "Дипломатичная карта", "Resources/Sprite/Cards/diplomatia", 110, 40));
+        CardManag.AllCards.Add(new Card("diplomatia","Наносит урон дипломатией", "Resources/Sprite/Cards/diplomatia", 15,10));
+        CardManag.AllCards.Add(new Card("scary", "Запугивает", "Resources/Sprite/Cards/scary", 25,20));
+        CardManag.AllCards.Add(new Card("charm", "Очаровывает", "Resources/Sprite/Cards/charm", 11, 3));
+        CardManag.AllCards.Add(new Card("diplomatia", "Дипломатичная карта", "Resources/Sprite/Cards/diplomatia", 10, 40));
 
 
     }
