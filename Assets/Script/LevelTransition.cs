@@ -5,8 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class LevelTransition : MonoBehaviour
 {
-    public void changeScene(int scene)
+    //public void changeScene(int scene)
+    //{
+    //    SceneManager.LoadScene(scene);
+    //}
+
+    public void Next()
     {
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadScene(2);
+    }
+
+    public void SkipMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

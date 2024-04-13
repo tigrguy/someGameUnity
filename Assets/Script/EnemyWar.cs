@@ -1,13 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EnemyInteraction : MonoBehaviour
+public class EnemyWar : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene("BattleScene_2");
+            SceneManager.LoadScene("BattleScene_4");
         }
     }
 }
