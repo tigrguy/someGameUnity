@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.Search;
+
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class Game
 {
@@ -54,7 +55,9 @@ public class GameManager : MonoBehaviour
     
 
     public GameObject ResultGO;
+    public GameObject ResultGOLose;
     public TextMeshProUGUI ResultTxt;
+    public TextMeshProUGUI ResultTxtLose;
 
     public List<CardInfoScript> PlayerHandCard = new List<CardInfoScript>(),
                                  EnemyHandCard = new List<CardInfoScript>();
@@ -137,10 +140,13 @@ public class GameManager : MonoBehaviour
             }
             if (EnemyHandCard.Count > 0)
                 EnemyTurn(EnemyHandCard);
-            PlayerHP = PlayerHP - Random.Range(4, 10);
+            PlayerHP = PlayerHP - Random.Range(8,15);
             ShowHP();
             UpdateHealthBarPlayer();
+            ChecnkForResultLose();
+            ShowHP();
             ChecnkForResult();
+            
 
         }
         ChangeTurn();
@@ -202,7 +208,10 @@ public class GameManager : MonoBehaviour
             Destroy(card.gameObject);
         }
         ShowHP();
+        ChecnkForResultLose();
+        ShowHP();
         ChecnkForResult();
+        
     }
     public float maxHealth = 100;
     [SerializeField] private Image healthBarFill;
@@ -234,24 +243,47 @@ public class GameManager : MonoBehaviour
     //    PlayerManaTxt.text = PlayerMana.ToString();
     //}
 
+    //public Button LoadingScene;
+    public Button LoadingMenu;
+
+    public Button LoadingScene;
+    
 
     void ChecnkForResult()
     {
-        if (EnemyHP == 0 || PlayerHP == 0)
+        if (EnemyHP == 0)
         {
             ResultGO.SetActive(true);
+
             StopAllCoroutines();
 
             if (EnemyHP == 0)
             {
                 ResultTxt.text = "WIIIIIIIIN";
-            }
-            else
-            {
-                ResultTxt.text = "lose(";
+
             }
 
         }
     }
+    public Button LoadingMenuLose;
+    void ChecnkForResultLose()
+    {
+        if (PlayerHP <= 0)
+        {
+            PlayerHP = 0;
+            ResultGOLose.SetActive(true);
+
+            StopAllCoroutines();
+
+            if (PlayerHP == 0)
+            {
+                ResultTxtLose.text = "lose(";
+
+            }
+            
+
+        }
+    }
+
 
 }

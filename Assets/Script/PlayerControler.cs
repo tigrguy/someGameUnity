@@ -20,7 +20,15 @@ public class PlayerControler : MonoBehaviour
     private void Update()
     {
         moveInput = joystick.Horizontal;
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        if (Mathf.Abs(joystick.Vertical) < 0.1f)
+        {
+            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+
     }
-    
+
 }
