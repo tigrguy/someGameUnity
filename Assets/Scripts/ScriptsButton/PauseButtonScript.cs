@@ -1,33 +1,51 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PauseButtonScript : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
-    private bool IsPaused = false;
-    [SerializeField] private GameObject pausePanel;
-
+    public static bool PauseGame;
+    public GameObject pauseMenu;
 
 
     void Update()
     {
-        if (IsPaused)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Time.timeScale = 0f;
-            pausePanel.SetActive(IsPaused);
+            if (PauseGame)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
         }
-        else
-        {
-            Time.timeScale = 1f;
-            pausePanel.SetActive(IsPaused);
+    }
 
-        }
-    }
-    public void PauseButton()
+    public void Resume()
     {
-        IsPaused = !IsPaused;
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        PauseGame = false;
     }
+
+    public void Pause()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+        PauseGame = true;
+
+    }
+
+    public void LoadMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Menu");
+    }
+
 
 
 }
