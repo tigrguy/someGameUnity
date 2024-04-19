@@ -56,8 +56,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject ResultGO;
     public GameObject ResultGOLose;
-    public TextMeshProUGUI ResultTxt;
-    public TextMeshProUGUI ResultTxtLose;
+
 
     public List<CardInfoScript> PlayerHandCard = new List<CardInfoScript>(),
                                  EnemyHandCard = new List<CardInfoScript>();
@@ -257,11 +256,6 @@ public class GameManager : MonoBehaviour
 
             StopAllCoroutines();
 
-            if (EnemyHP == 0)
-            {
-                ResultTxt.text = "WIIIIIIIIN";
-
-            }
 
         }
     }
@@ -275,12 +269,7 @@ public class GameManager : MonoBehaviour
 
             StopAllCoroutines();
 
-            if (PlayerHP == 0)
-            {
-                ResultTxtLose.text = "lose(";
-
-            }
-            
+      
 
         }
     }
