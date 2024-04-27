@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerControler : MonoBehaviour
 {
-    [SerializeField] private AudioSource ходьба;
+    AudioSource run;
     public float speed;
 
     private Rigidbody2D rb;
@@ -15,6 +15,8 @@ public class PlayerControler : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         joystickObject = joystick.gameObject; 
+
+        run = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -26,13 +28,27 @@ public class PlayerControler : MonoBehaviour
         if (Mathf.Abs(joystick.Vertical) >= 0.9f)
         {
             joystickObject.SetActive(false);
-            ходьба.Play();
+            run.Stop();
+
         }
         else
         {
             joystickObject.SetActive(true);
             rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-            ходьба.Stop();
+
+            
+            if (rb.velocity.x != 0)
+            {
+                if (!run.isPlaying)
+                {
+                    run.Play();
+                }
+            }
+            else
+            {
+                run.Stop();
+            }
+
         }
     }
 }

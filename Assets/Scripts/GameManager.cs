@@ -56,7 +56,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject ResultGO;
     public GameObject ResultGOLose;
+    public GameObject StopPanel;
 
+    public AudioSource panelSoundWin;
+    public AudioSource panelSoundLose;
+    public AudioSource panelSoundDamage;
 
     public List<CardInfoScript> PlayerHandCard = new List<CardInfoScript>(),
                                  EnemyHandCard = new List<CardInfoScript>();
@@ -134,18 +138,22 @@ public class GameManager : MonoBehaviour
         {
             while(TurnTime -- > Random.Range(24, 29))
             {
+                StopPanel.SetActive(true);
                 TurnTimeText.text = TurnTime.ToString();
                 yield return new WaitForSeconds(1);
+                
             }
             if (EnemyHandCard.Count > 0)
                 EnemyTurn(EnemyHandCard);
             PlayerHP = PlayerHP - Random.Range(8,15);
+            panelSoundDamage.Play();
             ShowHP();
             UpdateHealthBarPlayer();
             ChecnkForResultLose();
             ShowHP();
             ChecnkForResult();
-            
+            StopPanel.SetActive(false);
+
 
         }
         ChangeTurn();
@@ -197,6 +205,7 @@ public class GameManager : MonoBehaviour
         if (isEnemyArracked)
         {
             EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue);
+            panelSoundDamage.Play();
             Destroy(card.gameObject);
             UpdateHealthBarEnemy();
         }
@@ -255,7 +264,7 @@ public class GameManager : MonoBehaviour
             ResultGO.SetActive(true);
 
             StopAllCoroutines();
-
+            panelSoundWin.Play();
 
         }
     }
@@ -268,8 +277,8 @@ public class GameManager : MonoBehaviour
             ResultGOLose.SetActive(true);
 
             StopAllCoroutines();
+            panelSoundLose.Play();
 
-      
 
         }
     }
