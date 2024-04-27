@@ -10,6 +10,8 @@ public class CardSMovementcript : MonoBehaviour, IBeginDragHandler, IDragHandler
     public Transform DefaultParent;
     public GameManager GameManager;
     public bool IsDraggable;
+
+    public AudioSource SwapCard;
     void Awake()
     {
         MainCamera = Camera.allCameras[0];
@@ -24,25 +26,29 @@ public class CardSMovementcript : MonoBehaviour, IBeginDragHandler, IDragHandler
 
         IsDraggable = DefaultParent.GetComponent<DropPlaceScript>().Type == FieldType.SELF_HAND &&
                       GameManager.IsPlayerTurn;
+        SwapCard.Play();
         if (!IsDraggable)
             return;
 
         transform.SetParent(DefaultParent.parent);
 
         GetComponent<CanvasGroup>().blocksRaycasts = false;
+        
     }
 
     public void OnDrag(PointerEventData eventData) 
     {
+        //SwapCard.Play();
         if (!IsDraggable)
             return;
-
         Vector3 newPos = MainCamera.ScreenToWorldPoint(eventData.position);
         transform.position = newPos + offset;
+        
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        
         if (!IsDraggable)
             return;
         transform.SetParent(DefaultParent);

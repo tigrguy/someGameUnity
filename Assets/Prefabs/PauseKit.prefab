@@ -132,6 +132,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5195003765500625144}
+        m_TargetAssemblyTypeName: SoundsButton, Assembly-CSharp
+        m_MethodName: Next
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &998816868468052794
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6170320574365601713}
   - component: {fileID: 610493449557493688}
+  - component: {fileID: 5195003765500625144}
   m_Layer: 5
   m_Name: PauseKit
   m_TagString: Untagged
@@ -161,6 +174,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5301723645464217051}
   - {fileID: 8831948256015533256}
   - {fileID: 3586973071340369249}
   - {fileID: 4338592007221043963}
@@ -184,6 +198,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1180752504886055071}
+--- !u!114 &5195003765500625144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998816868468052794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4008cc1c8ec1a554a9d874b5848ee2b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  src: {fileID: 536163385818660933}
+  next: {fileID: 8300000, guid: dffa77145a9284148a925f2394357771, type: 3}
+  money: {fileID: 8300000, guid: 23c0940d28652b94faa81b1414f0d2f3, type: 3}
+  soundTwo: {fileID: 8300000, guid: adeefb3a8df87024492daa1d5945b34c, type: 3}
 --- !u!1 &1180752504886055071
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +449,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7037839098945878494}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: UnmuteAllSounds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3660109719879982553
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,13 +472,14 @@ GameObject:
   - component: {fileID: 4338592007221043963}
   - component: {fileID: 9219521668058353774}
   - component: {fileID: 3870523533983987026}
+  - component: {fileID: 7037839098945878494}
   m_Layer: 5
   m_Name: SettingsMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4338592007221043963
 RectTransform:
   m_ObjectHideFlags: 0
@@ -497,6 +540,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7037839098945878494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3660109719879982553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34561ce0d007e740af6945562fca565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4493510954925593927
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +688,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 5195003765500625144}
+        m_TargetAssemblyTypeName: SoundsButton, Assembly-CSharp
+        m_MethodName: Next
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -785,6 +852,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 5195003765500625144}
+        m_TargetAssemblyTypeName: SoundsButton, Assembly-CSharp
+        m_MethodName: SoundTwo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &8662848920713296337
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +1008,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7037839098945878494}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: MuteAllSounds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8936509564776181255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,6 +1143,18 @@ MonoBehaviour:
       - m_Target: {fileID: 610493449557493688}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5195003765500625144}
+        m_TargetAssemblyTypeName: SoundsButton, Assembly-CSharp
+        m_MethodName: Next
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1193,3 +1296,94 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5195003765500625144}
+        m_TargetAssemblyTypeName: SoundsButton, Assembly-CSharp
+        m_MethodName: Next
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1001 &1167837710392896963
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6170320574365601713}
+    m_Modifications:
+    - target: {fileID: 2784475315511159280, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+      propertyPath: m_Name
+      value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460272537441478680, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.18414238
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460272537441478680, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.18414238
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460272537441478680, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.18414238
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460272537441478680, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 98.39026
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460272537441478680, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 377.93927
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460272537441478680, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.3412338
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460272537441478680, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460272537441478680, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460272537441478680, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460272537441478680, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460272537441478680, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460272537441478680, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460272537441478680, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+--- !u!82 &536163385818660933 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1676513305206517126, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+  m_PrefabInstance: {fileID: 1167837710392896963}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5301723645464217051 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6460272537441478680, guid: de2d82a9780f41a4d966c45c516c1d53, type: 3}
+  m_PrefabInstance: {fileID: 1167837710392896963}
+  m_PrefabAsset: {fileID: 0}
