@@ -11,16 +11,11 @@ public class AttackHero : MonoBehaviour, IDropHandler
         ENEMY,
         PLAYER
     }
-    public enum Weakness
-    {
-        DEMOCRATY,
-        CHARMING,
-        SCARING
-    }
+
 
     public HeroTyper Type;
     public GameManager GameManager;
-    public Weakness weakness = Weakness.DEMOCRATY;
+    
 
 
     public void OnDrop(PointerEventData eventData)
@@ -34,7 +29,7 @@ public class AttackHero : MonoBehaviour, IDropHandler
         if (card && Type == HeroTyper.ENEMY)
         {
             GameManager.DamageHero(card, true);
-
+            GameManager.WeaklessCard(card);
         }
 
 

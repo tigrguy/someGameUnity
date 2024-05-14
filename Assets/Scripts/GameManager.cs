@@ -6,6 +6,7 @@ using TMPro;
 
 using UnityEditor;
 using UnityEngine.SceneManagement;
+using System.Threading;
 
 public class Game
 {
@@ -25,10 +26,24 @@ public class Game
 
     List<Card> GiveDeckCard()
     {
+
         List<Card> list = new List<Card>();
+        int countCard = 0;
         for (int i = 0; i < 10; i++)
+        {
+            countCard += 1;
             list.Add(CardManag.AllCards[Random.Range(0, CardManag.AllCards.Count)]);
+            if (countCard == 2)
+            {
+                list.Add(CardManag.SpecialCards[Random.Range(0, CardManag.SpecialCards.Count)]);
+            }
+        }
+            
+
         return list;
+        
+
+
     }
 
 
@@ -65,6 +80,14 @@ public class GameManager : MonoBehaviour
     public List<CardInfoScript> PlayerHandCard = new List<CardInfoScript>(),
                                  EnemyHandCard = new List<CardInfoScript>();
 
+
+
+    public WeaknessCardManager weaknessBUFF;
+    public WeaknessCardManager weaknessDeBUFF;
+
+    public int extraDamageTurns = 0;
+    public int extraDamage = 1;
+    public Image extraDamageTurn;
 
     public bool IsPlayerTurn
     {
@@ -160,7 +183,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-
     void EnemyTurn(List<CardInfoScript> cards)
     {
         int count = cards.Count == 1 ? 1 :
@@ -199,12 +221,42 @@ public class GameManager : MonoBehaviour
         PlayerHPTxt.text = PlayerHP.ToString();
     }
 
-    
+    public void WeaklessCard(CardInfoScript card)
+    {
+        if (card.SelfCard.WeaknessCardManager == WeaknessCardManager.SCARING)
+        {
+            weaknessBUFF = card.SelfCard.WeaknessCardManager;
+        }
+        if (card.SelfCard.WeaknessCardManager == WeaknessCardManager.DAMAGE_BOOST)
+        {
+            extraDamageTurns = 2;
+            extraDamage = 2;
+        }
+    }
+
     public void DamageHero (CardInfoScript card, bool isEnemyArracked)
     {
         if (isEnemyArracked)
         {
-            EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue);
+            //EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue); //оригинал строчка
+            if (card.SelfCard.WeaknessCardManager == weaknessBUFF)
+            {
+                EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack*2, 0, int.MaxValue);
+                Debug.Log(card.SelfCard.Attack);
+                Debug.Log(1);
+            }
+            if (card.SelfCard.WeaknessCardManager == weaknessDeBUFF)
+            {
+                EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack/2, 0, int.MaxValue);
+                Debug.Log(card.SelfCard.Attack);
+                Debug.Log(2);
+            }
+            if (card.SelfCard.WeaknessCardManager != weaknessDeBUFF && card.SelfCard.WeaknessCardManager != weaknessBUFF)
+            {
+                EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue);
+                Debug.Log(card.SelfCard.Attack);
+                Debug.Log(3);
+            }
             panelSoundDamage.Play();
             Destroy(card.gameObject);
             UpdateHealthBarEnemy();
