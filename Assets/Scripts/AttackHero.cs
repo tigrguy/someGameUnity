@@ -27,7 +27,14 @@ public class AttackHero : MonoBehaviour, IDropHandler
 
         if (card && Type == HeroTyper.ENEMY)
         {
+<<<<<<< Updated upstream
             GameManager.DamageHero(card, true);
+=======
+            GameManager.WeaklessCard(card);
+            GameManager.DamageHero(card, true);
+            
+        }
+>>>>>>> Stashed changes
 
         }
 
