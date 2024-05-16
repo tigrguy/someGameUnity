@@ -22,9 +22,4 @@ public class SceneChanger : MonoBehaviour
 	{
 		Application.Quit ();
 	}
-
-    public void Change2Scene2()
-    {
-        SceneManager.LoadScene(6);
-    }
 }

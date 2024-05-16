@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using UnityEditor.Search;
 using UnityEditor;
-using UnityEngine.SceneManagement;
-using System.Threading;
 
 public class Game
 {
@@ -26,31 +24,14 @@ public class Game
 
     List<Card> GiveDeckCard()
     {
-
         List<Card> list = new List<Card>();
-        int countCard = 0;
         for (int i = 0; i < 10; i++)
-        {
-            countCard += 1;
             list.Add(CardManag.AllCards[Random.Range(0, CardManag.AllCards.Count)]);
-            if (countCard == 2)
-            {
-                list.Add(CardManag.SpecialCards[Random.Range(0, CardManag.SpecialCards.Count)]);
-            }
-        }
-            
-
         return list;
-        
-
-
     }
 
 
 }
-
-
-
 
 
 public class GameManager : MonoBehaviour
@@ -70,25 +51,21 @@ public class GameManager : MonoBehaviour
     
 
     public GameObject ResultGO;
-    public GameObject ResultGOLose;
-    public GameObject StopPanel;
-
-    public AudioSource panelSoundWin;
-    public AudioSource panelSoundLose;
-    public AudioSource panelSoundDamage;
+    public TextMeshProUGUI ResultTxt;
 
     public List<CardInfoScript> PlayerHandCard = new List<CardInfoScript>(),
                                  EnemyHandCard = new List<CardInfoScript>();
 
 
+<<<<<<< Updated upstream
+=======
 
     public WeaknessCardManager weaknessBUFF;
     public WeaknessCardManager weaknessDeBUFF;
 
-    public int extraDamageTurns = 0;
-    public int extraDamage = 1;
-    public Image extraDamageTurn;
+    
 
+>>>>>>> Stashed changes
     public bool IsPlayerTurn
     {
         get
@@ -107,6 +84,7 @@ public class GameManager : MonoBehaviour
         GiveHandCards(CurrentGame.PlayerDeck, PlayerHand);
 
         StartCoroutine(TurnFunc());
+        GenerateRandomValue();
         //ShowMana();
     }
 
@@ -142,6 +120,19 @@ public class GameManager : MonoBehaviour
         deck.RemoveAt(0);
 
     }
+    public int randomNumber;
+    public EmotionDiceTurn EmotionDiceTurn;
+    public void GenerateRandomValue()
+    {
+        // Генерируем случайное число от 0 до 2
+        randomNumber = Random.Range(0, 3);
+        EmotionDiceTurn imageUpdater = FindObjectOfType<EmotionDiceTurn>();
+
+        imageUpdater.UpdateImage(randomNumber);
+
+        Debug.Log("Номер кости " + randomNumber);
+    }
+    
 
     IEnumerator TurnFunc()
     {
@@ -150,38 +141,39 @@ public class GameManager : MonoBehaviour
 
         if (IsPlayerTurn)
         {
-            while(TurnTime -- > 0)
+            
+            while (TurnTime -- > 0)
             {
                 TurnTimeText.text = TurnTime.ToString();
                 yield return new WaitForSeconds(1);
-                
+
             }
         }
         else
         {
             while(TurnTime -- > Random.Range(24, 29))
             {
-                StopPanel.SetActive(true);
                 TurnTimeText.text = TurnTime.ToString();
                 yield return new WaitForSeconds(1);
-                
             }
             if (EnemyHandCard.Count > 0)
                 EnemyTurn(EnemyHandCard);
-            PlayerHP = PlayerHP - Random.Range(8,15);
-            panelSoundDamage.Play();
+            PlayerHP = PlayerHP - Random.Range(4, 10);
             ShowHP();
             UpdateHealthBarPlayer();
-            ChecnkForResultLose();
-            ShowHP();
             ChecnkForResult();
+<<<<<<< Updated upstream
+=======
             StopPanel.SetActive(false);
+            extraDamageTurns--;
 
+>>>>>>> Stashed changes
 
         }
         ChangeTurn();
 
     }
+
 
     void EnemyTurn(List<CardInfoScript> cards)
     {
@@ -201,7 +193,7 @@ public class GameManager : MonoBehaviour
         {
             GiveNewCard();
             //PlayerMana = Random.Range(1, 4);
-
+            GenerateRandomValue();
             //ShowMana();
         }
 
@@ -221,6 +213,12 @@ public class GameManager : MonoBehaviour
         PlayerHPTxt.text = PlayerHP.ToString();
     }
 
+<<<<<<< Updated upstream
+    
+=======
+    public int extraDamageTurns;
+    //public Sprite extraDamageTurn;
+
     public void WeaklessCard(CardInfoScript card)
     {
         if (card.SelfCard.WeaknessCardManager == WeaknessCardManager.SCARING)
@@ -230,34 +228,67 @@ public class GameManager : MonoBehaviour
         if (card.SelfCard.WeaknessCardManager == WeaknessCardManager.DAMAGE_BOOST)
         {
             extraDamageTurns = 2;
-            extraDamage = 2;
+            Debug.Log(4);
         }
     }
 
+>>>>>>> Stashed changes
     public void DamageHero (CardInfoScript card, bool isEnemyArracked)
     {
         if (isEnemyArracked)
         {
+<<<<<<< Updated upstream
+            EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue);
+=======
             //EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue); //оригинал строчка
-            if (card.SelfCard.WeaknessCardManager == weaknessBUFF)
+            if (card.SelfCard.WeaknessCardManager == weaknessBUFF && extraDamageTurns == 0)
             {
                 EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack*2, 0, int.MaxValue);
-                Debug.Log(card.SelfCard.Attack);
+                Debug.Log(card.SelfCard.Attack * 2);
                 Debug.Log(1);
             }
-            if (card.SelfCard.WeaknessCardManager == weaknessDeBUFF)
+            if (card.SelfCard.WeaknessCardManager == weaknessDeBUFF && extraDamageTurns == 0 )
             {
                 EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack/2, 0, int.MaxValue);
-                Debug.Log(card.SelfCard.Attack);
+                Debug.Log(card.SelfCard.Attack / 2);
                 Debug.Log(2);
             }
-            if (card.SelfCard.WeaknessCardManager != weaknessDeBUFF && card.SelfCard.WeaknessCardManager != weaknessBUFF)
+            if (card.SelfCard.WeaknessCardManager != weaknessDeBUFF && card.SelfCard.WeaknessCardManager != weaknessBUFF && extraDamageTurns == 0)
             {
                 EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue);
                 Debug.Log(card.SelfCard.Attack);
                 Debug.Log(3);
             }
+            //////////////// ТОЧНО ТАКОЙ ЖЕ КОД НО ДЛЯ БАФФА УРОНА!!!!!!!!!
+            //WeaklessCard(card);
+
+            if (extraDamageTurns != 0 && extraDamageTurns < 0)
+            {
+                Debug.Log(extraDamageTurns + "осталось ходов");
+                if (extraDamageTurns != 0 && card.SelfCard.WeaknessCardManager == weaknessBUFF && extraDamageTurns != 0)
+                {
+                    EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack * 4, 0, int.MaxValue);
+                    Debug.Log(card.SelfCard.Attack * 4 + "BUFF дипломатии");
+                    Debug.Log(extraDamageTurns + "осталось ходов");
+                }
+                if (extraDamageTurns != 0 && card.SelfCard.WeaknessCardManager == weaknessDeBUFF && extraDamageTurns != 0)
+                {
+                    EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue);
+                    Debug.Log(card.SelfCard.Attack + "BUFF обычной карты");
+                    Debug.Log(extraDamageTurns + "осталось ходов");
+                }
+                if (extraDamageTurns != 0 && card.SelfCard.WeaknessCardManager != weaknessDeBUFF && card.SelfCard.WeaknessCardManager != weaknessBUFF)
+                {
+                    EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack * 2, 0, int.MaxValue);
+                    Debug.Log(card.SelfCard.Attack * 2 + "дебафф карты");
+                    Debug.Log(extraDamageTurns + "осталось ходов");
+                }
+            }
+            
+
+
             panelSoundDamage.Play();
+>>>>>>> Stashed changes
             Destroy(card.gameObject);
             UpdateHealthBarEnemy();
         }
@@ -268,11 +299,9 @@ public class GameManager : MonoBehaviour
             Destroy(card.gameObject);
         }
         ShowHP();
-        ChecnkForResultLose();
-        ShowHP();
         ChecnkForResult();
-        
     }
+
     public float maxHealth = 100;
     [SerializeField] private Image healthBarFill;
     [SerializeField] private TextMeshProUGUI healthText;
@@ -303,37 +332,24 @@ public class GameManager : MonoBehaviour
     //    PlayerManaTxt.text = PlayerMana.ToString();
     //}
 
-    //public Button LoadingScene;
-    public Button LoadingMenu;
-
-    public Button LoadingScene;
-    
 
     void ChecnkForResult()
     {
-        if (EnemyHP == 0)
+        if (EnemyHP == 0 || PlayerHP == 0)
         {
             ResultGO.SetActive(true);
-
             StopAllCoroutines();
-            panelSoundWin.Play();
+
+            if (EnemyHP == 0)
+            {
+                ResultTxt.text = "WIIIIIIIIN";
+            }
+            else
+            {
+                ResultTxt.text = "lose(";
+            }
 
         }
     }
-    public Button LoadingMenuLose;
-    void ChecnkForResultLose()
-    {
-        if (PlayerHP <= 0)
-        {
-            PlayerHP = 0;
-            ResultGOLose.SetActive(true);
-
-            StopAllCoroutines();
-            panelSoundLose.Play();
-
-
-        }
-    }
-
 
 }
