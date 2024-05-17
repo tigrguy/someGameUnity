@@ -49,8 +49,8 @@ public class CardManager : MonoBehaviour
         CardManag.AllCards.Add(new Card("diplomatia", "Дипломатичная карта", "Resources/Sprite/Cards/diplomatia", 10, 0, WeaknessCardManager.DEMOCRATY));
 
         //CardManag.SpecialCards.Add(new Card("SpecialCards", "Дипломатичная карта", "Resources/Sprite/Cards/diplomatia", 0, 0, WeaknessCardManager.DAMAGE_BOOST));
-        //CardManag.SpecialCards.Add(new Card("BOOST", "Дипломатичная карта", "Resources/Sprite/Cards/diplomatia", 0, 0, WeaknessCardManager.DAMAGE_BOOST));
-        CardManag.SpecialCards.Add(new Card("random", "Дипломатичная карта", "Resources/Sprite/Cards/random", 0, 0, GetRandomWeaknessCard()));
+        CardManag.SpecialCards.Add(new Card("BOOST", "Дипломатичная карта", "Resources/Sprite/Cards/diplomatia", 0, 0, WeaknessCardManager.DAMAGE_BOOST));
+        //CardManag.SpecialCards.Add(new Card("random", "Дипломатичная карта", "Resources/Sprite/Cards/random", 0, 0, GetRandomWeaknessCard()));
 
     }
 

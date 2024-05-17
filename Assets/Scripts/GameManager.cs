@@ -80,8 +80,8 @@ public class GameManager : MonoBehaviour
     public WeaknessCardManager weaknessDeBUFF;
 
 
-    public int extraDamage = 1;
-    public Image extraDamageTurn;
+    
+
 
     
 
@@ -232,7 +232,7 @@ public class GameManager : MonoBehaviour
         PlayerHPTxt.text = PlayerHP.ToString();
     }
 
-
+    public TextMeshProUGUI extraDamageTurn;
     public int extraDamageTurns;
     //public Sprite extraDamageTurn;
 
@@ -245,6 +245,7 @@ public class GameManager : MonoBehaviour
         if (card.SelfCard.WeaknessCardManager == WeaknessCardManager.DAMAGE_BOOST)
         {
             extraDamageTurns = 2;
+            extraDamageTurn.text = extraDamageTurns.ToString();
             Debug.Log(4);
         }
     }
@@ -278,7 +279,7 @@ public class GameManager : MonoBehaviour
             //////////////// ТОЧНО ТАКОЙ ЖЕ КОД НО ДЛЯ БАФФА УРОНА!!!!!!!!!
             //WeaklessCard(card);
 
-            if (extraDamageTurns != 0 && extraDamageTurns < 0)
+            if (extraDamageTurns != 0 && extraDamageTurns > 0)
             {
                 Debug.Log(extraDamageTurns + "осталось ходов");
                 if (extraDamageTurns != 0 && card.SelfCard.WeaknessCardManager == weaknessBUFF && extraDamageTurns != 0)
@@ -287,7 +288,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log(card.SelfCard.Attack * 4 + "BUFF дипломатии");
                     Debug.Log(extraDamageTurns + "осталось ходов");
                 }
-                if (extraDamageTurns != 0 && card.SelfCard.WeaknessCardManager == weaknessDeBUFF && extraDamageTurns != 0)
+                else if (extraDamageTurns != 0 && card.SelfCard.WeaknessCardManager == weaknessDeBUFF && extraDamageTurns != 0)
                 {
                     EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue);
                     Debug.Log(card.SelfCard.Attack + "BUFF обычной карты");
