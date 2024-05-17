@@ -79,11 +79,12 @@ public class GameManager : MonoBehaviour
     public WeaknessCardManager weaknessBUFF;
     public WeaknessCardManager weaknessDeBUFF;
 
+    public Image WeaknessImageBUFF;
+    public Image WeaknessImageDeBUFF;
 
-    
 
 
-    
+
 
 
     public bool IsPlayerTurn
@@ -186,8 +187,13 @@ public class GameManager : MonoBehaviour
             ShowHP();
             ChecnkForResult();
             StopPanel.SetActive(false);
+            extraDamageTurn.text = extraDamageTurns.ToString();
             extraDamageTurns--;
-
+            extraDamageTurn.text = extraDamageTurns.ToString();
+            if (extraDamageTurns == 0)
+                {
+                extraDamageTurn.gameObject.SetActive(false);
+                }
         }
         ChangeTurn();
 
@@ -241,16 +247,19 @@ public class GameManager : MonoBehaviour
         if (card.SelfCard.WeaknessCardManager == WeaknessCardManager.SCARING)
         {
             weaknessBUFF = card.SelfCard.WeaknessCardManager;
+            WeaknessImageBUFF = card.Logo; // Изменяет картинку карты на картинку SCARING
         }
         if (card.SelfCard.WeaknessCardManager == WeaknessCardManager.DAMAGE_BOOST)
         {
             extraDamageTurns = 2;
             extraDamageTurn.text = extraDamageTurns.ToString();
+            extraDamageTurn.gameObject.SetActive(true); 
             Debug.Log(4);
         }
     }
 
-    public void DamageHero (CardInfoScript card, bool isEnemyArracked)
+
+        public void DamageHero (CardInfoScript card, bool isEnemyArracked)
     {
         if (isEnemyArracked)
         {

@@ -1797,7 +1797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &682614564
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2167,8 +2167,10 @@ MonoBehaviour:
   panelSoundDamage: {fileID: 1156996124}
   PlayerHandCard: []
   EnemyHandCard: []
-  weaknessBUFF: 2
-  weaknessDeBUFF: 2
+  weaknessBUFF: 0
+  weaknessDeBUFF: 1
+  WeaknessImageBUFF: {fileID: 1574624387}
+  WeaknessImageDeBUFF: {fileID: 1925596785}
   randomNumber: 0
   EmotionDiceTurn: {fileID: 1611685767}
   extraDamageTurn: {fileID: 682614565}
@@ -2792,7 +2794,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.14778207, y: 0.13032031}
   m_AnchorMax: {x: 0.778218, y: 0.317}
-  m_AnchoredPosition: {x: -1.2485352, y: 13.099976}
+  m_AnchoredPosition: {x: -1.2485352, y: 13.0998535}
   m_SizeDelta: {x: 2.4970016, y: 0.778389}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1063879169
