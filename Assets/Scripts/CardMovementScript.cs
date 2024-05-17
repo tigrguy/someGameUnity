@@ -10,13 +10,12 @@ public class CardSMovementcript : MonoBehaviour, IBeginDragHandler, IDragHandler
     public Transform DefaultParent;
     public GameManager GameManager;
     public bool IsDraggable;
-<<<<<<< Updated upstream
-=======
+
     public Game Game;
     public CardInfoScript CardInfoScript;
 
     public AudioSource SwapCard;
->>>>>>> Stashed changes
+
     void Awake()
     {
         MainCamera = Camera.allCameras[0];
@@ -32,12 +31,9 @@ public class CardSMovementcript : MonoBehaviour, IBeginDragHandler, IDragHandler
         DefaultParent = transform.parent;
 
         IsDraggable = DefaultParent.GetComponent<DropPlaceScript>().Type == FieldType.SELF_HAND &&
-<<<<<<< Updated upstream
-                      GameManager.IsPlayerTurn;
-=======
                       GameManager.IsPlayerTurn && CardInfoScript.SelfCard.Manacost == GameManager.randomNumber;
         SwapCard.Play();
->>>>>>> Stashed changes
+
         if (!IsDraggable)
             return;
 
