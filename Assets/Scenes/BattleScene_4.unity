@@ -2035,8 +2035,10 @@ MonoBehaviour:
   EnemyHandCard: []
   weaknessBUFF: 0
   weaknessDeBUFF: 1
+  extraDamage: 1
+  extraDamageTurn: {fileID: 0}
   randomNumber: 0
-  EmotionDiceTurn: {fileID: 0}
+  EmotionDiceTurn: {fileID: 1611685767}
   extraDamageTurns: 0
   maxHealth: 100
   healthBarFill: {fileID: 287424208}
