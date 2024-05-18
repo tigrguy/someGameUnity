@@ -1,42 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using static UnityEditor.Progress;
 
-public class SoundManager : MonoBehaviour
+public class setings : MonoBehaviour
 {
-    //public static SoundManager instance;
 
-    //private AudioSource[] allAudioSources;
-
-
-    //private void Start()
+    //// Start is called before the first frame update
+    //void Start()
     //{
-    //    allAudioSources = FindObjectsOfType<AudioSource>(); // Найти все AudioSource в сцене
 
 
 
     //}
 
-    //public void MuteAllSounds()
+
+    //public void SaveSettingsSoundOn()
     //{
-    //    foreach (AudioSource audioSource in allAudioSources)
-    //    {
-    //        audioSource.mute = true; // Выключить все AudioSource
-    //    }
+    //    PlayerPrefs.SetInt("", 1);
+
     //}
 
-    //public void UnmuteAllSounds()
+    //public void SaveSettingsSoundOff()
     //{
-    //    foreach (AudioSource audioSource in allAudioSources)
-    //    {
-    //        audioSource.mute = false; // Включить все AudioSource
-    //    }
+    //    PlayerPrefs.SetInt("", 0);
+
     //}
 
+    //// Update is called once per frame
+    //void Update()
+    //{   
 
+    //}
 
-
-    public static SoundManager Instance { get; private set; }
+    public static setings Instance { get; private set; }
 
     private bool isMuted;
 
@@ -76,6 +76,5 @@ public class SoundManager : MonoBehaviour
     private void SaveMuteState()
     {
         PlayerPrefs.SetInt("Muted", isMuted ? 1 : 0);
-    }   
-
+    }
 }
