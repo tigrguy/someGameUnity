@@ -15,7 +15,6 @@ public class AttackHero : MonoBehaviour, IDropHandler
 
     public HeroTyper Type;
     public GameManager GameManager;
-    
 
 
     public void OnDrop(PointerEventData eventData)
@@ -28,10 +27,11 @@ public class AttackHero : MonoBehaviour, IDropHandler
 
         if (card && Type == HeroTyper.ENEMY)
         {
-            GameManager.DamageHero(card, true);
-            GameManager.WeaklessCard(card);
-        }
 
+            GameManager.WeaklessCard(card);
+            GameManager.DamageHero(card, true);
+
+        }
 
     }
 

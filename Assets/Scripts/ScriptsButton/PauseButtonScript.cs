@@ -8,6 +8,8 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool PauseGame;
     public GameObject pauseMenu;
+    public static bool Help;
+    public GameObject HelpKenu;
 
 
     void Update()
@@ -46,6 +48,19 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void PauseHelp()
+    {
+        HelpKenu.SetActive(true);
+        Time.timeScale = 0f;
+        Help = true;
 
+    }
+
+    public void ResumeHelp()
+    {
+        HelpKenu.SetActive(false);
+        Time.timeScale = 1f;
+        Help = false;
+    }
 
 }
