@@ -6,6 +6,8 @@ using TMPro;
 using UnityEditor.Search;
 using UnityEditor;
 
+
+
 public class Game
 {
     public List<Card> EnemyDeck, PlayerDeck;
@@ -79,11 +81,12 @@ public class GameManager : MonoBehaviour
     public WeaknessCardManager weaknessBUFF;
     public WeaknessCardManager weaknessDeBUFF;
 
+    public Image WeaknessImageBUFF;
+    public Image WeaknessImageDeBUFF;
 
-    
+    public CurrencyManager CurrencyManager;
 
 
-    
 
 
     public bool IsPlayerTurn
@@ -186,8 +189,13 @@ public class GameManager : MonoBehaviour
             ShowHP();
             ChecnkForResult();
             StopPanel.SetActive(false);
+            extraDamageTurn.text = extraDamageTurns.ToString();
             extraDamageTurns--;
-
+            extraDamageTurn.text = extraDamageTurns.ToString();
+            if (extraDamageTurns == 0)
+                {
+                extraDamageTurn.gameObject.SetActive(false);
+                }
         }
         ChangeTurn();
 
@@ -241,16 +249,20 @@ public class GameManager : MonoBehaviour
         if (card.SelfCard.WeaknessCardManager == WeaknessCardManager.SCARING)
         {
             weaknessBUFF = card.SelfCard.WeaknessCardManager;
+            WeaknessImageBUFF.sprite = EmotionDiceTurn.numberSprites[1];
+
         }
         if (card.SelfCard.WeaknessCardManager == WeaknessCardManager.DAMAGE_BOOST)
         {
             extraDamageTurns = 2;
             extraDamageTurn.text = extraDamageTurns.ToString();
+            extraDamageTurn.gameObject.SetActive(true); 
             Debug.Log(4);
         }
     }
 
-    public void DamageHero (CardInfoScript card, bool isEnemyArracked)
+
+        public void DamageHero (CardInfoScript card, bool isEnemyArracked)
     {
         if (isEnemyArracked)
         {
@@ -258,23 +270,34 @@ public class GameManager : MonoBehaviour
             //EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue);
 
             //EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue); //îðèãèíàë ñòðî÷êà
-            if (card.SelfCard.WeaknessCardManager == weaknessBUFF && extraDamageTurns == 0)
+            if (card.SelfCard.WeaknessCardManager == weaknessBUFF )
             {
-                EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack*2, 0, int.MaxValue);
-                Debug.Log(card.SelfCard.Attack * 2);
-                Debug.Log(1);
+                if(extraDamageTurns == 0 || extraDamageTurns < 0)
+                {
+                    EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack * 2, 0, int.MaxValue);
+                    Debug.Log(card.SelfCard.Attack * 2);
+                    Debug.Log(1);
+                }
             }
-            if (card.SelfCard.WeaknessCardManager == weaknessDeBUFF && extraDamageTurns == 0 )
+            if (card.SelfCard.WeaknessCardManager == weaknessDeBUFF)
             {
-                EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack/2, 0, int.MaxValue);
-                Debug.Log(card.SelfCard.Attack / 2);
-                Debug.Log(2);
+                if (extraDamageTurns == 0 || extraDamageTurns < 0)
+                {
+                    EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack / 2, 0, int.MaxValue);
+                    Debug.Log(card.SelfCard.Attack / 2);
+                    Debug.Log(2);
+                }
+
             }
-            if (card.SelfCard.WeaknessCardManager != weaknessDeBUFF && card.SelfCard.WeaknessCardManager != weaknessBUFF && extraDamageTurns == 0)
+            if (card.SelfCard.WeaknessCardManager != weaknessDeBUFF && card.SelfCard.WeaknessCardManager != weaknessBUFF)
             {
-                EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue);
-                Debug.Log(card.SelfCard.Attack);
-                Debug.Log(3);
+                if (extraDamageTurns == 0 || extraDamageTurns < 0)
+                {
+                    EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue);
+                    Debug.Log(card.SelfCard.Attack);
+                    Debug.Log(3);
+                }
+
             }
             //////////////// ÒÎ×ÍÎ ÒÀÊÎÉ ÆÅ ÊÎÄ ÍÎ ÄËß ÁÀÔÔÀ ÓÐÎÍÀ!!!!!!!!!
             //WeaklessCard(card);
@@ -360,7 +383,6 @@ public class GameManager : MonoBehaviour
 
             StopAllCoroutines();
             panelSoundWin.Play();
-
         }
     }
     public Button LoadingMenuLose;
