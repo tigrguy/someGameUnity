@@ -21,7 +21,7 @@ public class PlayerResources : MonoBehaviour
 
     public void UpdateText()
     {
-        textMoney.text = "Монет: " + money.ToString();
+        textMoney.text = money.ToString();
         textWater.text = "Воды: " + water.ToString();
         textFood.text = "Еды: " + food.ToString();
     }
