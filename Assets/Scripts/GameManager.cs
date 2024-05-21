@@ -6,6 +6,8 @@ using TMPro;
 using UnityEditor.Search;
 using UnityEditor;
 
+
+
 public class Game
 {
     public List<Card> EnemyDeck, PlayerDeck;
@@ -82,7 +84,7 @@ public class GameManager : MonoBehaviour
     public Image WeaknessImageBUFF;
     public Image WeaknessImageDeBUFF;
 
-
+    public CurrencyManager CurrencyManager;
 
 
 
@@ -247,7 +249,8 @@ public class GameManager : MonoBehaviour
         if (card.SelfCard.WeaknessCardManager == WeaknessCardManager.SCARING)
         {
             weaknessBUFF = card.SelfCard.WeaknessCardManager;
-            WeaknessImageBUFF = card.Logo; // Изменяет картинку карты на картинку SCARING
+            WeaknessImageBUFF.sprite = EmotionDiceTurn.numberSprites[1];
+
         }
         if (card.SelfCard.WeaknessCardManager == WeaknessCardManager.DAMAGE_BOOST)
         {
@@ -267,23 +270,34 @@ public class GameManager : MonoBehaviour
             //EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue);
 
             //EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue); //оригинал строчка
-            if (card.SelfCard.WeaknessCardManager == weaknessBUFF && extraDamageTurns == 0)
+            if (card.SelfCard.WeaknessCardManager == weaknessBUFF )
             {
-                EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack*2, 0, int.MaxValue);
-                Debug.Log(card.SelfCard.Attack * 2);
-                Debug.Log(1);
+                if(extraDamageTurns == 0 || extraDamageTurns < 0)
+                {
+                    EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack * 2, 0, int.MaxValue);
+                    Debug.Log(card.SelfCard.Attack * 2);
+                    Debug.Log(1);
+                }
             }
-            if (card.SelfCard.WeaknessCardManager == weaknessDeBUFF && extraDamageTurns == 0 )
+            if (card.SelfCard.WeaknessCardManager == weaknessDeBUFF)
             {
-                EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack/2, 0, int.MaxValue);
-                Debug.Log(card.SelfCard.Attack / 2);
-                Debug.Log(2);
+                if (extraDamageTurns == 0 || extraDamageTurns < 0)
+                {
+                    EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack / 2, 0, int.MaxValue);
+                    Debug.Log(card.SelfCard.Attack / 2);
+                    Debug.Log(2);
+                }
+
             }
-            if (card.SelfCard.WeaknessCardManager != weaknessDeBUFF && card.SelfCard.WeaknessCardManager != weaknessBUFF && extraDamageTurns == 0)
+            if (card.SelfCard.WeaknessCardManager != weaknessDeBUFF && card.SelfCard.WeaknessCardManager != weaknessBUFF)
             {
-                EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue);
-                Debug.Log(card.SelfCard.Attack);
-                Debug.Log(3);
+                if (extraDamageTurns == 0 || extraDamageTurns < 0)
+                {
+                    EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue);
+                    Debug.Log(card.SelfCard.Attack);
+                    Debug.Log(3);
+                }
+
             }
             //////////////// ТОЧНО ТАКОЙ ЖЕ КОД НО ДЛЯ БАФФА УРОНА!!!!!!!!!
             //WeaklessCard(card);
@@ -369,7 +383,6 @@ public class GameManager : MonoBehaviour
 
             StopAllCoroutines();
             panelSoundWin.Play();
-
         }
     }
     public Button LoadingMenuLose;
