@@ -13,15 +13,17 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-    public void Change2Scene2()
-    {
-        SceneManager.LoadScene(6);
-    }
 
     public void ChangeScene2()
     {
         SceneManager.LoadScene(2);
     }
+
+    public void Change2Scene2()
+    {
+        SceneManager.LoadScene(6);
+    }
+
     public void Back()
 	{
 		Application.Quit ();

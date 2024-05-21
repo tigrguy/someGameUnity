@@ -11,6 +11,7 @@ public enum WeaknessCardManager
     SCARING,
     DAMAGE_BOOST
 }
+
 public struct Card
 {
     public string Name;

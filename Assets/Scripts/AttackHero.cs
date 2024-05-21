@@ -15,22 +15,29 @@ public class AttackHero : MonoBehaviour, IDropHandler
 
     public HeroTyper Type;
     public GameManager GameManager;
-
+    public CardSMovementcript CardSMovementcript;
 
     public void OnDrop(PointerEventData eventData)
     {
+
         if (!GameManager.IsPlayerTurn)
             return;
 
+        CardSMovementcript cardScript = eventData.pointerDrag.GetComponent<CardSMovementcript>();
+        //CardInfoScript card = eventData.pointerDrag.GetComponent<CardInfoScript>();
 
-        CardInfoScript card = eventData.pointerDrag.GetComponent<CardInfoScript>();
-
-        if (card && Type == HeroTyper.ENEMY)
+        if (cardScript != null) // Проверьте, существует ли компонент
         {
+            CardInfoScript card = eventData.pointerDrag.GetComponent<CardInfoScript>();
+            Debug.Log(cardScript.IsDraggable + "--"+"IsDraggable");
 
-            GameManager.WeaklessCard(card);
-            GameManager.DamageHero(card, true);
+            if (card && Type == HeroTyper.ENEMY && cardScript.IsDraggable == true)
+            {
 
+                GameManager.WeaklessCard(card);
+                GameManager.DamageHero(card, true);
+            }
+            
         }
 
     }

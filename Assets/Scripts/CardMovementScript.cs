@@ -31,7 +31,8 @@ public class CardSMovementcript : MonoBehaviour, IBeginDragHandler, IDragHandler
         DefaultParent = transform.parent;
 
         IsDraggable = DefaultParent.GetComponent<DropPlaceScript>().Type == FieldType.SELF_HAND &&
-                      GameManager.IsPlayerTurn && CardInfoScript.SelfCard.Manacost == GameManager.randomNumber;
+                      GameManager.IsPlayerTurn && CardInfoScript.SelfCard.Manacost == GameManager.randomNumber 
+                      || CardInfoScript.SelfCard.WeaknessCardManager == WeaknessCardManager.DAMAGE_BOOST;
         SwapCard.Play();
 
         if (!IsDraggable)
