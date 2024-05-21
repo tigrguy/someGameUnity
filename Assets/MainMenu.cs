@@ -19,6 +19,8 @@ public class MainMenu : MonoBehaviour
 
 
 
+
+
     public void LoadRandomSceneAsync()
     {
         // Массив сцен, из которых будем выбирать случайную
