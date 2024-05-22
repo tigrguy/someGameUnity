@@ -11,8 +11,6 @@ using UnityEditor;
 public class Game
 {
     public List<Card> EnemyDeck, PlayerDeck;
-                       
-
 
     public Game()
     {
@@ -21,11 +19,14 @@ public class Game
 
         //EnemyHand = new List<Card>();
         //PlayerHand = new List<Card>();
+
     }
 
 
     List<Card> GiveDeckCard()
     {
+        int score = PlayerPrefs.GetInt("Peredatchik_1");
+        int score_2 = PlayerPrefs.GetInt("Peredatchik_2");
 
         List<Card> list = new List<Card>();
         int countCard = 0;
@@ -33,19 +34,26 @@ public class Game
         {
             countCard += 1;
             list.Add(CardManag.AllCards[Random.Range(0, CardManag.AllCards.Count)]);
-            if (countCard == 2)
+
+            if (score_2 == 2)
             {
                 list.Add(CardManag.SpecialCards[Random.Range(0, CardManag.SpecialCards.Count)]);
+                Debug.Log("иди нахуй дважды");
+                //PlayerPrefs.DeleteKey("Peredatchik_1");
+            }
+            if (score == 1)
+            {
+                list.Add(CardManag.SpeciaSpecialCards[Random.Range(0, CardManag.SpeciaSpecialCards.Count)]);
+                Debug.Log("иди нахуй");
+                //PlayerPrefs.DeleteKey("Peredatchik_2");
+
             }
         }
-
-
+        
+        
         return list;
 
-
-
     }
-
 
 }
 
@@ -100,6 +108,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //float PlayerHP = PlayerPrefs.GetFloat("HpPlayer");
         Turn = 0;
         CurrentGame = new Game();
 
@@ -115,8 +124,10 @@ public class GameManager : MonoBehaviour
     void GiveHandCards(List<Card> deck, Transform hand)
     {
         int i = 0;
-        while (i++ <= 1)
+        while (i++ <= 2)
             GiveCardToHand(deck, hand);
+            PlayerPrefs.DeleteAll();
+            PlayerPrefs.Save();
     }
 
 
@@ -259,6 +270,12 @@ public class GameManager : MonoBehaviour
             extraDamageTurn.gameObject.SetActive(true); 
             Debug.Log(4);
         }
+        if (card.SelfCard.WeaknessCardManager == WeaknessCardManager.DAMAGE_BOOST_ImScene)
+        {
+            GenerateRandomValue();
+            Debug.Log("pizda");
+        }
+
     }
 
 
@@ -270,6 +287,8 @@ public class GameManager : MonoBehaviour
             //EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue);
 
             //EnemyHP = Mathf.Clamp(EnemyHP - card.SelfCard.Attack, 0, int.MaxValue); //оригинал строчка
+
+
             if (card.SelfCard.WeaknessCardManager == weaknessBUFF )
             {
                 if(extraDamageTurns == 0 || extraDamageTurns < 0)
@@ -379,6 +398,7 @@ public class GameManager : MonoBehaviour
     {
         if (EnemyHP == 0)
         {
+            PlayerPrefs.SetFloat("HpPlayer", PlayerHP);
             ResultGO.SetActive(true);
 
             StopAllCoroutines();

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Shop : MonoBehaviour
@@ -10,6 +11,10 @@ public class Shop : MonoBehaviour
 
     public GameObject Sword;
     public GameObject Axe;
+
+    public Game game;
+    public int Peredatchik_1= 0;
+    public int Peredatchik_2 = 0;
 
     public void BuyFood()
     {
@@ -43,6 +48,10 @@ public class Shop : MonoBehaviour
                     resourcePlayer.UpdateText();
                     Instantiate(Sword, resourcePlayer.slots[j].transform);
                     resourcePlayer.isFull[j] = true;
+                    Peredatchik_1++;
+                    PlayerPrefs.SetInt("Peredatchik_1", 1);
+                    PlayerPrefs.Save();
+                    Debug.Log("Покупка 1");
                     break;
                 }
             }
@@ -61,9 +70,15 @@ public class Shop : MonoBehaviour
                     resourcePlayer.UpdateText();
                     Instantiate(Axe, resourcePlayer.slots[j].transform);
                     resourcePlayer.isFull[j] = true;
+                    Peredatchik_2++;
+                    PlayerPrefs.SetInt("Peredatchik_2", 2);
+                    PlayerPrefs.Save();
+                    Debug.Log("Покупка 2");
                     break;
                 }
             }
         }
     }
+
+
 }

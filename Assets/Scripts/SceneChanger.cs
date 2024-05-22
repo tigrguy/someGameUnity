@@ -9,23 +9,42 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-    public void ChangeScene1()
+    public void Change1Scene()
     {
         SceneManager.LoadScene(1);
     }
     public void Change2Scene2()
     {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(5);
     }
 
-    public void ChangeScene2()
+    public void Change2Scene()
     {
         SceneManager.LoadScene(2);
     }
 
-    public void Change2Scene2()
+    public void Change3Scene()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public void ChangeBattleScene_1()
+    {
+        SceneManager.LoadScene(4);
+    }
+
+    public void ChangeBattleScene_2Mob()
     {
         SceneManager.LoadScene(6);
+    }
+    public void ChangeBattleScene_3Booss()
+    {
+        SceneManager.LoadScene(7);
+    }
+
+    public void Change3Scene1()
+    {
+        SceneManager.LoadScene(8);
     }
 
     public void Back()

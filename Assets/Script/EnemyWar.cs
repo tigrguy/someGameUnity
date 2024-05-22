@@ -9,7 +9,7 @@ public class EnemyWar : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene("BattleScene_4");
+            SceneManager.LoadScene("BattleScene_2Mob");
         }
     }
 }

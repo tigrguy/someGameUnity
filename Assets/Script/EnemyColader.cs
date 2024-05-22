@@ -7,7 +7,7 @@ public class EnemyInteraction : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene("BattleScene_2");
+            SceneManager.LoadScene("BattleScene_1");
         }
     }
 }
