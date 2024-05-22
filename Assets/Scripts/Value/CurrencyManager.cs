@@ -1,43 +1,26 @@
-using DG.Tweening.Core.Easing;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-
+using TMPro;
 
 public class CurrencyManager : MonoBehaviour
 {
-    public GameManager GameManager;
-    int cristalSave;
-    float PlayerHpBar;
+    public PlayerResources playerResources;
     public TextMeshProUGUI cristalText;
 
-    void Awake()
+    void Start()
     {
-        cristalText.text = PlayerPrefs.GetInt("cristalSave").ToString();
-        
-    }
-
-    void SaveGame()
-    {
-        // Получить экземпляр GameManager
-        GameManager gameManager = FindObjectOfType<GameManager>();
-
-        // Получить объект ResultGo из экземпляра GameManager
-        GameObject resultGo = gameManager.gameObject.transform.Find("ResultGo").gameObject;
-
-        if (resultGo == true)
+        Debug.Log("CurrencyManager Start");
+        if (playerResources == null)
         {
-            PlayerPrefs.SetInt("cristalSave", cristalSave + 10);
-            PlayerPrefs.SetFloat("SavedFloat", PlayerHpBar);
-            //PlayerPrefs.Save();
-            cristalText.text = (cristalSave + 10).ToString();
-
-            Debug.Log("Game data saved!");
+            playerResources = FindObjectOfType<PlayerResources>();
         }
-        
+
+        UpdateMoneyText();
+        Debug.Log("CurrencyManager money from PlayerResources: " + playerResources.money);
     }
 
+    public void UpdateMoneyText()
+    {
+        cristalText.text = playerResources.money.ToString();
+        Debug.Log("CurrencyManager displaying money: " + playerResources.money);
+    }
 }
-
