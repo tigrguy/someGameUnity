@@ -29,14 +29,14 @@ public class SaveMoney : MonoBehaviour
 
     public void SaveMoneyVoidShop()
     {
-        PlayerPrefs.SetInt("MoneyInt", playerResources.money);
-        PlayerPrefs.SetInt("MoneyShop", playerResources.money_last);
+        //PlayerPrefs.SetInt("MoneyInt", playerResources.money);
+        //PlayerPrefs.SetInt("MoneyShop", playerResources.money_last);
         PlayerPrefs.Save();
     }
 
     public void SaveMoneyVoidShopAfter()
     {
-        int one = PlayerPrefs.GetInt("MoneyShop");
+        int one = PlayerPrefs.GetInt("MoneyInt");
         PlayerPrefs.SetInt("MoneyInt", one + MoneyPlus);
         PlayerPrefs.Save();
     }
