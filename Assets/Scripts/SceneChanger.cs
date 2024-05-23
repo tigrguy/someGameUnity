@@ -11,6 +11,7 @@ public class SceneChanger : MonoBehaviour
     }
     public void Change1Scene()
     {
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene(1);
     }
     public void Change2Scene2()

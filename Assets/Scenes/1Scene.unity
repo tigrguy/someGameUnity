@@ -224,8 +224,8 @@ RectTransform:
   m_Children:
   - {fileID: 1793754063}
   - {fileID: 686662250}
-  - {fileID: 693449121}
   - {fileID: 5250620328341033677}
+  - {fileID: 693449121}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1926,6 +1926,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseKit
       objectReference: {fileID: 0}
+    - target: {fileID: 998816868468052794, guid: ddb46e3762362f2438979c3e5a846d8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1180752504886055071, guid: ddb46e3762362f2438979c3e5a846d8c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1985,6 +1989,10 @@ PrefabInstance:
     - target: {fileID: 1326395169542993763, guid: ddb46e3762362f2438979c3e5a846d8c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805552373958865376, guid: ddb46e3762362f2438979c3e5a846d8c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3660109719879982553, guid: ddb46e3762362f2438979c3e5a846d8c, type: 3}
       propertyPath: m_IsActive
@@ -2129,6 +2137,10 @@ PrefabInstance:
     - target: {fileID: 6170320574365601713, guid: ddb46e3762362f2438979c3e5a846d8c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890710760746814492, guid: ddb46e3762362f2438979c3e5a846d8c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0024414062
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
