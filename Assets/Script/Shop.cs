@@ -50,6 +50,8 @@ public class Shop : MonoBehaviour
                     resourcePlayer.isFull[j] = true;
                     Peredatchik_1++;
                     PlayerPrefs.SetInt("Peredatchik_1", 1);
+                    PlayerPrefs.SetInt("Peredatchik_11", Peredatchik_1);
+                    PlayerPrefs.SetInt("MoneyInt", resourcePlayer.money);
                     PlayerPrefs.Save();
                     Debug.Log("Покупка 1");
                     break;
@@ -72,6 +74,8 @@ public class Shop : MonoBehaviour
                     resourcePlayer.isFull[j] = true;
                     Peredatchik_2++;
                     PlayerPrefs.SetInt("Peredatchik_2", 2);
+                    PlayerPrefs.SetInt("Peredatchik_22", Peredatchik_2);
+                    PlayerPrefs.SetInt("MoneyInt", resourcePlayer.money);
                     PlayerPrefs.Save();
                     Debug.Log("Покупка 2");
                     break;

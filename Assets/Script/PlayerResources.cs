@@ -14,12 +14,15 @@ public class PlayerResources : MonoBehaviour
     public TextMeshProUGUI textWater;
     public TextMeshProUGUI textFood;
 
+    public int money_last;
     
     void Start()
     {
         UpdateText();
-        int moneySave = PlayerPrefs.GetInt("MoneyInt", 90);
+        int moneySave = PlayerPrefs.GetInt("MoneyInt");
+        PlayerPrefs.Save();
         money = moneySave;
+        money_last = money;
         textMoney.text = money.ToString();
     }
 

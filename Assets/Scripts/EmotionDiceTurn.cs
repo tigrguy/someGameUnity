@@ -7,6 +7,7 @@ public class EmotionDiceTurn : MonoBehaviour
     public Sprite[] numberSprites; // ћассив Sprite дл€ каждого числа
     public Image imageComponent;    // UI Image, который будет отображать картинку
 
+
     public void UpdateImage(int randomNumber)
     {
         // ѕровер€ем, что randomNumber находитс€ в пределах массива numberSprites

@@ -11,7 +11,7 @@ using UnityEditor;
 public class Game
 {
     public List<Card> EnemyDeck, PlayerDeck;
-
+    public Shop shop;
     public Game()
     {
         EnemyDeck = GiveDeckCard();
@@ -28,26 +28,42 @@ public class Game
         int score = PlayerPrefs.GetInt("Peredatchik_1");
         int score_2 = PlayerPrefs.GetInt("Peredatchik_2");
 
+        int countCard1 = PlayerPrefs.GetInt("Peredatchik_11");
+        int countCard2 = PlayerPrefs.GetInt("Peredatchik_22");
+
+
         List<Card> list = new List<Card>();
         int countCard = 0;
+
+        while(countCard1 >0)
+        {
+            list.Add(CardManag.SpeciaSpecialCards[Random.Range(0, CardManag.SpeciaSpecialCards.Count)]);
+            countCard1--;
+        }
+        while(countCard2 > 0)
+        {
+            list.Add(CardManag.SpecialCards[Random.Range(0, CardManag.SpecialCards.Count)]);
+            countCard2--;
+        }
+
         for (int i = 0; i < 10; i++)
         {
             countCard += 1;
             list.Add(CardManag.AllCards[Random.Range(0, CardManag.AllCards.Count)]);
 
-            if (score_2 == 2)
-            {
-                list.Add(CardManag.SpecialCards[Random.Range(0, CardManag.SpecialCards.Count)]);
-                Debug.Log("иди нахуй дважды");
-                //PlayerPrefs.DeleteKey("Peredatchik_1");
-            }
-            if (score == 1)
-            {
-                list.Add(CardManag.SpeciaSpecialCards[Random.Range(0, CardManag.SpeciaSpecialCards.Count)]);
-                Debug.Log("иди нахуй");
-                //PlayerPrefs.DeleteKey("Peredatchik_2");
+            //if (score_2 == 2)
+            //{
+            //    list.Add(CardManag.SpecialCards[Random.Range(0, CardManag.SpecialCards.Count)]);
+            //    Debug.Log("иди нахуй дважды");
+            //    //PlayerPrefs.DeleteKey("Peredatchik_1");
+            //}
+            //if (score == 1)
+            //{
+            //    list.Add(CardManag.SpeciaSpecialCards[Random.Range(0, CardManag.SpeciaSpecialCards.Count)]);
+            //    Debug.Log("иди нахуй");
+            //    //PlayerPrefs.DeleteKey("Peredatchik_2");
 
-            }
+            //}
         }
         
         
@@ -126,7 +142,8 @@ public class GameManager : MonoBehaviour
         int i = 0;
         while (i++ <= 2)
             GiveCardToHand(deck, hand);
-            PlayerPrefs.DeleteAll();
+            PlayerPrefs.DeleteKey("Peredatchik_1");
+            PlayerPrefs.DeleteKey("Peredatchik_2");
             PlayerPrefs.Save();
     }
 
@@ -269,11 +286,15 @@ public class GameManager : MonoBehaviour
             extraDamageTurn.text = extraDamageTurns.ToString();
             extraDamageTurn.gameObject.SetActive(true); 
             Debug.Log(4);
+            PlayerPrefs.DeleteKey("Peredatchik_1");
+            PlayerPrefs.Save();
         }
         if (card.SelfCard.WeaknessCardManager == WeaknessCardManager.DAMAGE_BOOST_ImScene)
         {
             GenerateRandomValue();
             Debug.Log("pizda");
+            PlayerPrefs.DeleteKey("Peredatchik_2");
+            PlayerPrefs.Save();
         }
 
     }
