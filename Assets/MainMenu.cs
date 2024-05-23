@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
     public void LoadRandomSceneAsync()
     {
         // Массив сцен, из которых будем выбирать случайную
-        string[] scenes = { "1Scene", "2Scene2" };
+        string[] scenes = { "3Scene1", "2Scene2" };
 
         // Выбираем случайную сцену
         int randomIndex = Random.Range(0, scenes.Length);

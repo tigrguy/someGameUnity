@@ -3,7 +3,7 @@ using TMPro;
 
 public class PlayerResources : MonoBehaviour
 {
-    public int money = 150;
+    public int money = 0;
     public int water = 0;
     public int food = 0;
 
@@ -14,9 +14,13 @@ public class PlayerResources : MonoBehaviour
     public TextMeshProUGUI textWater;
     public TextMeshProUGUI textFood;
 
+    
     void Start()
     {
         UpdateText();
+        int moneySave = PlayerPrefs.GetInt("MoneyInt", 90);
+        money = moneySave;
+        textMoney.text = money.ToString();
     }
 
     public void UpdateText()

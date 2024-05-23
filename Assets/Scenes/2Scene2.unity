@@ -610,6 +610,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1730992210332093588, guid: ddb46e3762362f2438979c3e5a846d8c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 109.565674
+      objectReference: {fileID: 0}
+    - target: {fileID: 2035244730900153524, guid: ddb46e3762362f2438979c3e5a846d8c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 109.565674
+      objectReference: {fileID: 0}
     - target: {fileID: 3660109719879982553, guid: ddb46e3762362f2438979c3e5a846d8c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2045,7 +2053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1714012510358271307, guid: c26baf8445d778349af85d70c000c93a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 22.900024
+      value: 22.899902
       objectReference: {fileID: 0}
     - target: {fileID: 1714012510358271307, guid: c26baf8445d778349af85d70c000c93a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
