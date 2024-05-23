@@ -18,6 +18,7 @@ public class GuidePanelController : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(waiter());
         // Инициализация начального состояния
         UpdateSlide();
         UpdateButtons();
@@ -56,8 +57,16 @@ public class GuidePanelController : MonoBehaviour
 
     private void UpdateButtons()
     {
+
         // Обновляем видимость кнопок
         backButton.gameObject.SetActive(currentSlideIndex > 0);
         nextButton.gameObject.SetActive(currentSlideIndex < guideImages.Length - 1);
     }
+    IEnumerator waiter()
+    {
+        
+        yield return new WaitForSeconds(2);
+
+    }
+
 }
