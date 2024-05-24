@@ -180,6 +180,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   joystick: {fileID: 0}
+  anime: {fileID: 0}
+  FaceRight: 1
+  FaceRight2: 1
+  moveVector: {x: 0, y: 0}
+  sr: {fileID: 0}
 --- !u!222 &2530936790108070575
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -208,7 +213,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a99d9395a73b9a94b988444dcc6bbc22, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 101be8cf776294b47812a1f7a72d4562, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

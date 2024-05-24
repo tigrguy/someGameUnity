@@ -34,11 +34,11 @@ public class CardSMovementcript : MonoBehaviour, IBeginDragHandler, IDragHandler
                       GameManager.IsPlayerTurn && CardInfoScript.SelfCard.Manacost == GameManager.randomNumber 
                       || CardInfoScript.SelfCard.WeaknessCardManager == WeaknessCardManager.DAMAGE_BOOST
                       || CardInfoScript.SelfCard.WeaknessCardManager == WeaknessCardManager.DAMAGE_BOOST_ImScene;
-        SwapCard.Play();
+        
 
         if (!IsDraggable)
             return;
-
+        SwapCard.Play();
         transform.SetParent(DefaultParent.parent);
 
         GetComponent<CanvasGroup>().blocksRaycasts = false;
